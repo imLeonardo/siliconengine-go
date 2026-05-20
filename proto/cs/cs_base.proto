@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "ghgame/transfer/proto";
+
+// 客户端请求
+message CS_Req {
+  int64 routeId = 1;
+  bytes msg = 2;
+}
+
+// 客户端响应
+message CS_Resp {
+  int64 routeId = 1;
+  bytes msg = 2;
+}
+
+// 服务端请求
+message SC_Req {
+  bytes msg = 1;
+}
+
+// 服务端响应
+message SC_Resp {
+  bytes msg = 1;
+}

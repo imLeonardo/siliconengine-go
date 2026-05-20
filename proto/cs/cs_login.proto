@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "ghgame/transfer/proto";
+
+message CS_UserInfo {
+  string username = 1;
+  string password = 2;
+}
+
+message CS_RegisterReq {
+  string username = 1;
+  string password = 2;
+}
+
+message CS_RegisterResp {
+  int32 code = 1;
+  string msg = 2;
+}
+
+message CS_LoginReq {
+  string username = 1;
+  string password = 2;
+}
+
+message CS_LoginResp {
+  int32 code = 1;
+  string msg = 2;
+}

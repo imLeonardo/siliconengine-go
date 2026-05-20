@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "ghgame/transfer/proto";
+
+enum CS_RouteID {
+  none = 0;
+  docs = 100;
+  login = 1001;
+}
