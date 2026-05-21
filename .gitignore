@@ -32,5 +32,6 @@
 .idea/
 .cache/
 logs/
+go.work.sum
 
 *.pb.go

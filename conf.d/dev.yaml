@@ -1,0 +1,42 @@
+app:
+  maxProcs: 0 # 最大CPU数 0: 默认
+  appModule: ["gateway", "account", "logic"] # 应用模块 gateway: 网关模块 account: 账号模块 logic: 逻辑模块
+
+worker:
+  pool:
+    size: 10000 # 协程池大小
+    expiryDuration: 500 # 协程过期时间,单位ms
+
+cluster:
+  type: dev
+  mode: 2 # 1: cluster 2: standalone
+  isFrontend: true
+  port: 3250
+
+http:
+  addr: "0.0.0.0:8080" # http端口
+
+logger:
+  filePattern: "logs/{$cluster.type}_%Y%m%d%H%M.log" # 日志文件名格式
+  maxAge: 30 # 最大保留天数
+  level: 0 # -1:debug 0:info 1:warn 2:error 3:dpanic 4:panic 5:fatal
+  isDocker: false # 是否在docker中运行
+  callerSkip: 1 # 调用者跳过层数
+
+pitaya:
+  serializertype: 2 # 1: json 2: protobuf
+  handler.messages.compression: true # 是否开启消息压缩
+
+pitaya.cluster:
+  rpc:
+    client:
+      nats.connect: "nats://192.168.5.105:30150"
+    server:
+      nats.connect: "nats://192.168.5.105:30150"
+      loopbackenabled: true # 是否开启本地调用
+  sd:
+    etcd:
+      endpoints: ["192.168.5.105:30121"]
+      user: "ghgame"
+      pass: "g6Vst$Vj+YT_+:2sxx(P"
+      prefix: "/ghgame/server"
